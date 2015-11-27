@@ -19,7 +19,7 @@ public class Window extends JFrame {
 	 */
 	public Window(Pong pong) {
 		this.pong = pong;
-		this.addKeyListener(pong);
+		this.addKeyListener(pong.getRacket());
 	}
 
 	/**
