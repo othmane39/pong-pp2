@@ -138,9 +138,10 @@ public class Pong extends JPanel{
 	}
 	
 	public boolean isColision(){
-		if(ball.getPosition().x >= racket.getPosition().x && ball.getPosition().x <= racket.getPosition().x + racket.getWidth())
+		if(ball.getPosition().x >= racket.getPosition().x && ball.getPosition().x <= racket.getPosition().x + racket.getWidth()){
 			if (ball.getPosition().y >= racket.getPosition().y && ball.getPosition().y <= racket.getPosition().y+ racket.getHeight()/2) 
 				return true;
+		}
 		return false;
 	}
 }
