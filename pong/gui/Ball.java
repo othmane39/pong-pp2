@@ -20,6 +20,7 @@ public class Ball extends PongItem{
 		super.width = icon.getIconWidth();
 		super.height = icon.getIconHeight();
 		speed = new Point(Pong.BALL_SPEED, Pong.BALL_SPEED);
+		position = new Point(40, 30);
 
 		
 	}

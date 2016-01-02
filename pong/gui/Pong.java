@@ -3,12 +3,12 @@ package pong.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
+//import java.awt.Point;
+//import java.awt.Toolkit;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.ImageIcon;
+//import java.awt.event.KeyEvent;
+//import java.awt.event.KeyListener;
+//import javax.swing.ImageIcon;
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -66,17 +66,20 @@ public class Pong extends JPanel{
 	
 	private Ball ball;
 	private Racket racket;
+	private Racket racket_opp;
 
 	public Pong() {
-		ImageIcon icon;
 
 		ball = new Ball();
 		racket = new Racket();
-	
+		racket_opp = new Racket();
 		
-
+		racket.setStartsPosition(1);
+		racket_opp.setStartsPosition(2);
+		
 		this.setPreferredSize(new Dimension(SIZE_PONG_X, SIZE_PONG_Y));
 		this.addKeyListener(racket);
+	
 	}
 
 	/**
@@ -85,6 +88,7 @@ public class Pong extends JPanel{
 	public void animate() {
 		ball.animate();
 		racket.animate();
+		
 
 		/* And update output */
 		updateScreen();
@@ -128,7 +132,15 @@ public class Pong extends JPanel{
 		/* Draw items */
 		graphicContext.drawImage(ball.getItem(), ball.getPosition().x, ball.getPosition().y, ball.getWidth(), ball.getHeight(), null);
 		graphicContext.drawImage(racket.getItem(), racket.getPosition().x, racket.getPosition().y, racket.getWidth(), racket.getHeight(), null);
+		graphicContext.drawImage(racket_opp.getItem(), racket_opp.getPosition().x, racket_opp.getPosition().y, racket_opp.getWidth(), racket_opp.getHeight(), null);
 
 		this.repaint();
+	}
+	
+	public boolean isColision(){
+		if(ball.getPosition().x >= racket.getPosition().x && ball.getPosition().x <= racket.getPosition().x + racket.getWidth())
+			if (ball.getPosition().y >= racket.getPosition().y && ball.getPosition().y <= racket.getPosition().y+ racket.getHeight()/2) 
+				return true;
+		return false;
 	}
 }

@@ -20,10 +20,14 @@ public class Racket extends PongItem implements KeyListener{
 		icon = new ImageIcon(item);
 		super.width = icon.getIconWidth();
 		super.height = icon.getIconHeight();
+		
+		
 		//speed = 0;
 		
 		//speed = new Point(Pong.BALL_SPEED, Pong.BALL_SPEED);
 	}
+	
+	
 	
 	public Image getItem(){
 		return item;
@@ -48,7 +52,27 @@ public class Racket extends PongItem implements KeyListener{
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-
+	
+	public void setStartsPosition(int i){
+		switch(i){
+			case 1:
+				position = new Point(0 , 0);
+				break;
+			case 2:
+				position = new Point(Pong.SIZE_PONG_X-width, 0);
+				break;
+			case 3:
+				position = new Point(0, Pong.SIZE_PONG_Y);
+				break;
+			case 4:
+				position = new Point(Pong.SIZE_PONG_X-width, Pong.SIZE_PONG_Y);
+				break;
+			default:
+				System.err.println("setStrartPositionError i= " + i);
+				break;
+		}
+	}
+	
 
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
