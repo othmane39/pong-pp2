@@ -36,9 +36,8 @@ public class Window extends JFrame {
 			pong.animate();
 			try {
 			if( pong.isColision()){
-				System.out.println("Col");
-				Thread.sleep(2000);
-				break;
+				pong.getBall().setCollision();
+				//break;
 			}
 			
 				Thread.sleep(Pong.timestep);
