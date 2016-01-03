@@ -65,19 +65,15 @@ public class Pong extends JPanel{
 
 	
 	private Ball ball;
-	
-
 	private Racket racket;
 	private Racket racket_opp;
-	
-	static public boolean mirror_player = false;
 
 	public Pong() {
 
 		ball = new Ball();
 		racket = new Racket();
 		racket_opp = new Racket();
-		/////ICI FAUT FAIRE UN TRUC
+		
 		racket.setStartsPosition(1);
 		racket_opp.setStartsPosition(2);
 		
@@ -92,23 +88,15 @@ public class Pong extends JPanel{
 	public void animate() {
 		ball.animate();
 		racket.animate();
-		System.out.println("\t\t" + ball.getPosition());
+		
 
 		/* And update output */
 		updateScreen();
-	}
-	
-	public Ball getBall() {
-		return ball;
 	}
 
 
 	public Racket getRacket(){
 		return racket;
-	}
-	
-	public Racket getRacketOpp(){
-		return racket_opp;
 	}
 	/*
 	 * (non-Javadoc) This method is called by the AWT Engine to paint what
@@ -156,5 +144,4 @@ public class Pong extends JPanel{
 		}
 		return false;
 	}
-	
 }

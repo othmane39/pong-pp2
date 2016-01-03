@@ -13,11 +13,11 @@ public abstract class PongItem {
 		position = new Point(0,0);
 	}
 	
-	public void setPosition(Point p){
+	protected void setPosition(Point p){
 		position = p;
 	}
 	
-	public Point getPosition(){
+	protected Point getPosition(){
 		return position;
 	}
 	

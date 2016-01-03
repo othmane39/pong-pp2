@@ -3,10 +3,9 @@ package net;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Client implements NetworkSocketInterface{
+public class Client {
 	private Socket socket;
 	private int port;
-	
 	
 	public Client(String ip){
 		try{
@@ -19,21 +18,12 @@ public class Client implements NetworkSocketInterface{
 		}
 	}
 	
-	
-	
 	public void close(){
 		try{
 			socket.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-	}
-
-
-
-	@Override
-	public Socket getSocket() {
-		return socket;
 	}
 	
 	
