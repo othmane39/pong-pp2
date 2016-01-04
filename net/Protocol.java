@@ -46,17 +46,17 @@ public void run(){
 					//sendBallPos();
 					//if(side_changed_now == false)
 						//side_changed_now = true;
-					System.out.println("ISMIIIINE");
+					//System.out.println("ISMIIIINE");
 				}
 				//sendRacketPos();
 				sendData();
 				
 				Thread.sleep(10);
 				resp = receiveData();
-				if(resp.length == 3){
+				/*if(resp.length == 3){
 				System.out.println("THIS FINAL " + resp.length + " " + resp[0] + resp[1] + resp[2]);
 				}
-				else System.out.println("THIS FINAL " + resp.length + " " + resp[0] + resp[1] + resp[2]+ resp[3] + resp[4] + resp[5]);
+				else System.out.println("THIS FINAL " + resp.length + " " + resp[0] + resp[1] + resp[2]+ resp[3] + resp[4] + resp[5]);*/
 				
 				
 				if(resp.length == 3){
@@ -64,9 +64,20 @@ public void run(){
 				}
 				if(resp.length == 6){
 					pong.getRacketOpp().setPosition(new Point( Integer.parseInt(resp[1]) + Pong.SIZE_PONG_X - pong.getRacket().getWidth() , Integer.parseInt(resp[2])));
-					if(pong.getBall().getPosition().x - Integer.parseInt(resp[4]) < 0 && pong.getBall().getSpeed().x > 0){
+					//if(pong.getBall().getPosition().x - Integer.parseInt(resp[4]) < 0 && pong.getBall().getSpeed().x > 0){
+						//pong.getBall().setPosition(new Point(Integer.parseInt(resp[4]), Integer.parseInt(resp[5])));
+						//System.out.println("ISMIIIINE");
+					//}else if (pong.getBall().getPosition().x - Integer.parseInt(resp[4]) > 0 && pong.getBall().getSpeed().x <0){
+						//pong.getBall().setPosition(new Point(Integer.parseInt(resp[4]), Integer.parseInt(resp[5])));
+						//System.out.println("ISMIIIINE");
+					//if(pong.getBall().getSpeed().x > 0 && pong.getBall().getPosition().x > Integer.parseInt(resp[4])){
+					if(pong.getBall().getPosition().x < Pong.SIZE_PONG_X/2-10 || pong.getBall().getPosition().x > Pong.SIZE_PONG_X + 10) 
 						pong.getBall().setPosition(new Point(Integer.parseInt(resp[4]), Integer.parseInt(resp[5])));
-					}
+						//System.out.println("ISMIIIINE");
+					//}
+					//if(pong.getBall().getSpeed().x < 0 && pong.getBall().getPosition().x > Integer.parseInt(resp[4])){
+						
+						//if (pong.getBall().getPosition().x - Integer.parseInt(resp[4]) > 0 && pong.getBall().getSpeed().x <0){
 					
 				}
 				
