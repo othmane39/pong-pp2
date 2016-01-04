@@ -38,7 +38,31 @@ public class Ball extends PongItem{
 	}
 	
 	public Point getPosition(){
-		return super.position;
+		if (Pong.mirror_player)
+			return new Point(Pong.SIZE_PONG_X- position.x - width, position.y);
+		return position;
+	}
+	
+	public Point getPosxy(){
+		return position;
+	}
+	
+	public void setPosition(Point p){
+		//if(Pong.mirror_player)
+			//position = new Point(Pong.SIZE_PONG_X - position.x - width, position.y);
+		//else 
+		position = p;
+	}
+	
+	//public void setMirrorPosition(Point p){
+		//position = new Point(Pong.SIZE_PONG_X - p.x - width, p.y);
+	//}
+
+	public void setMirrorPosition(Point p){
+		if(Pong.mirror_player)
+			position = new Point(Pong.SIZE_PONG_X - position.x - width, position.y);
+		else 
+		position = p;
 	}
 	public Point getSpeed() {
 		return speed;
@@ -69,6 +93,10 @@ public class Ball extends PongItem{
 			position.y = Pong.SIZE_PONG_Y - height;
 			speed.y = -speed.y;
 		}
+	}
+	
+	public void setCollision() {
+		speed.x = -speed.x;
 	}
 
 }

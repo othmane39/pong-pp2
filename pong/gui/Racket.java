@@ -49,6 +49,8 @@ public class Racket extends PongItem implements KeyListener{
 		return speed;
 	}
 	
+	
+	
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}

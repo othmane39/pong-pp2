@@ -27,6 +27,7 @@ public class Pong extends JPanel{
 	 * defining the background color of the Pong
 	 */
 	private static final Color backgroundColor = new Color(0xFF, 0x40, 0);
+	private static final Color backgroundColor2 = new Color(0xAA, 0x40, 0);
 
 	/**
 	 * Width of pong area
@@ -65,15 +66,19 @@ public class Pong extends JPanel{
 
 	
 	private Ball ball;
+	
+
 	private Racket racket;
 	private Racket racket_opp;
+	
+	static public boolean mirror_player = false;
 
 	public Pong() {
 
 		ball = new Ball();
 		racket = new Racket();
 		racket_opp = new Racket();
-		
+		/////ICI FAUT FAIRE UN TRUC
 		racket.setStartsPosition(1);
 		racket_opp.setStartsPosition(2);
 		
@@ -86,17 +91,27 @@ public class Pong extends JPanel{
          * Proceeds to the movement of the ball and updates the screen
 	 */
 	public void animate() {
-		ball.animate();
+		//if(isMySide())
+			ball.animate();
+		//}
 		racket.animate();
-		
+		//System.out.println("\t\t" + ball.getPosition());
 
 		/* And update output */
 		updateScreen();
+	}
+	
+	public Ball getBall() {
+		return ball;
 	}
 
 
 	public Racket getRacket(){
 		return racket;
+	}
+	
+	public Racket getRacketOpp(){
+		return racket_opp;
 	}
 	/*
 	 * (non-Javadoc) This method is called by the AWT Engine to paint what
@@ -126,7 +141,10 @@ public class Pong extends JPanel{
 				graphicContext = buffer.getGraphics();
 		}
 		/* Fill the area with blue */
-		graphicContext.setColor(backgroundColor);
+		if(mirror_player){
+			graphicContext.setColor(backgroundColor2);
+		}
+		else graphicContext.setColor(backgroundColor);
 		graphicContext.fillRect(0, 0, SIZE_PONG_X, SIZE_PONG_Y);
 
 		/* Draw items */
@@ -143,5 +161,11 @@ public class Pong extends JPanel{
 				return true;
 		}
 		return false;
+	}
+	
+	public boolean isMySide(){
+		if(getBall().getPosition().x < Pong.SIZE_PONG_X/2)
+			return true;
+		else return false;
 	}
 }

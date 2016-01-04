@@ -13,13 +13,14 @@ public abstract class PongItem {
 		position = new Point(0,0);
 	}
 	
-	protected void setPosition(Point p){
+	public void setPosition(Point p){
 		position = p;
 	}
 	
-	protected Point getPosition(){
+	public Point getPositions(){
 		return position;
 	}
+	
 	
 	public abstract void animate();
 	

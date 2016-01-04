@@ -2,24 +2,32 @@ package net;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
-public class Server {
+
+public class Server implements NetworkSocketInterface {
 
 	static int port;
-	private static ServerSocket socket;
+	private static Socket socket;
 	
+
 	
 	public Server() {
 		port = 4444;
 		try{
-			socket = new ServerSocket(port);
+			
+			ServerSocket socket_t = new ServerSocket(port);
 			System.out.println("Listn");
-			socket.accept();
+			socket = socket_t.accept();
 			System.out.println("Connectd");
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Socket getSocket(){
+		return socket;
 	}
 	
 	public void close(){
@@ -29,5 +37,6 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
+	
 	
 }
